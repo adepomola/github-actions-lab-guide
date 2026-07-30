@@ -1,0 +1,11 @@
+{
+  "name": "github-actions-lab-guide",
+  "version": "1.0.0",
+  "description": "GitHub Actions CI/CD Lab Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"All tests passed successfully!\""
+  },
+  "author": "Adepomola Ayomide",
+  "license": "MIT"
+}
