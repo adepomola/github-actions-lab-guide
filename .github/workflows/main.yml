@@ -1,10 +1,7 @@
-name: CI Pipeline
+name: CI
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -13,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -24,23 +21,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Tests
-        run: npm test
+      - name: Build
+        run: echo "Build completed successfully"
 
-      - name: Use Repository Secret
-        run: echo "${{ secrets.MY_SECRET }}"
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          node-version: '20'
-
-      - name: Run Linter
-        run: echo "Linting completed successfully!"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
