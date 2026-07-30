@@ -27,6 +27,9 @@ jobs:
       - name: Run Tests
         run: npm test
 
+        - name: Use Repository Secret
+        run: echo "${{ secrets.MY_SECRET }}"
+
   lint:
     runs-on: ubuntu-latest
 
